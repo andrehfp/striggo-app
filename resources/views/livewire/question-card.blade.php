@@ -3,7 +3,7 @@
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden" wire:key="question-{{ $question->id }}-{{ md5(json_encode($shuffledOptions)) }}">
 
             <!-- Two-Panel Layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 min-h-[500px]">
 
                 <!-- Left Panel: Question -->
                 <div class="p-8 sm:p-12 bg-gradient-to-br from-primary-50 to-indigo-50 flex flex-col">
