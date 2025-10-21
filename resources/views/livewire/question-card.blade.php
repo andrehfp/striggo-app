@@ -122,12 +122,12 @@
             @endif
 
             <!-- Action Button -->
-            <div class="px-6 pb-6 {{ $answered ? 'pt-0' : 'pt-4 border-t border-gray-100' }}">
+            <div class="px-6 pb-6 {{ $answered ? 'pt-3' : 'pt-4 border-t border-gray-100' }}">
                 @if(!$answered)
                     <button
                         wire:click="submitAnswer"
                         @disabled(!$selectedAnswer)
-                        class="w-full py-3.5 rounded-xl font-semibold text-white transition-all duration-200
+                        class="w-full py-4 rounded-xl font-semibold text-white transition-all duration-200
                             @if($selectedAnswer)
                                 bg-gradient-to-r from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700 shadow-lg hover:shadow-xl
                             @else
@@ -143,8 +143,9 @@
                     </button>
                 @else
                     <button
+                        type="button"
                         wire:click="nextQuestion"
-                        class="w-full py-3.5 bg-gradient-to-r {{ $wasCorrect ? 'from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700' : 'from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700' }} text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2"
+                        class="w-full py-4 bg-gradient-to-r {{ $wasCorrect ? 'from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700' : 'from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700' }} text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2"
                     >
                         @if($isLastQuestion)
                             Ver Resultados
