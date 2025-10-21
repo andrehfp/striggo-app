@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use App\Models\Question;
 use App\Services\GamificationService;
 use Illuminate\Support\Facades\Auth;
@@ -79,6 +80,7 @@ class PracticeSession extends Component
         return Question::find($this->questionIds[$this->currentQuestionIndex]);
     }
 
+    #[On('session-answer-submitted')]
     public function handleAnswerSubmitted($result)
     {
         // Store the answer result
@@ -96,6 +98,7 @@ class PracticeSession extends Component
         }
     }
 
+    #[On('session-next-question')]
     public function nextQuestion()
     {
         $this->currentQuestionIndex++;
@@ -115,18 +118,10 @@ class PracticeSession extends Component
         $this->endTime = now()->toISOString();
     }
 
+    #[On('restart-session')]
     public function restartSession()
     {
         $this->startSession();
-    }
-
-    protected function getListeners()
-    {
-        return [
-            'session-answer-submitted' => 'handleAnswerSubmitted',
-            'session-next-question' => 'nextQuestion',
-            'restart-session' => 'restartSession',
-        ];
     }
 
     public function getSessionDuration(): string
