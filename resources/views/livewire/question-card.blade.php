@@ -80,9 +80,9 @@
 
             <!-- Feedback & Explanation (appears inline after answering) -->
             @if($answered)
-                <div class="px-6 pb-2 space-y-2">
+                <div class="px-6 py-3 space-y-3">
                     <!-- Feedback Badge -->
-                    <div class="flex items-center gap-3 p-3 rounded-xl {{ $wasCorrect ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200' }}">
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-xl {{ $wasCorrect ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200' }}">
                         <div class="text-2xl">
                             @if($wasCorrect) 🎉 @else 💪 @endif
                         </div>
@@ -122,7 +122,7 @@
             @endif
 
             <!-- Action Button -->
-            <div class="px-6 pb-6 pt-4 {{ $answered ? '' : 'border-t border-gray-100' }}">
+            <div class="px-6 pb-6 {{ $answered ? 'pt-0' : 'pt-4 border-t border-gray-100' }}">
                 @if(!$answered)
                     <button
                         wire:click="submitAnswer"
