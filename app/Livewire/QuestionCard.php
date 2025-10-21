@@ -11,6 +11,7 @@ class QuestionCard extends Component
 {
     public ?int $questionId = null;
     public bool $isSessionMode = false;
+    public bool $isLastQuestion = false;
     public ?Question $question = null;
     public ?string $selectedAnswer = null;
     public bool $answered = false;
@@ -25,10 +26,11 @@ class QuestionCard extends Component
         $this->gamificationService = $gamificationService;
     }
 
-    public function mount(?int $questionId = null, bool $isSessionMode = false)
+    public function mount(?int $questionId = null, bool $isSessionMode = false, bool $isLastQuestion = false)
     {
         $this->questionId = $questionId;
         $this->isSessionMode = $isSessionMode;
+        $this->isLastQuestion = $isLastQuestion;
 
         if ($questionId) {
             // Session mode: load specific question

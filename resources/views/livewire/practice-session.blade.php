@@ -26,6 +26,7 @@
             <livewire:question-card
                 :question-id="$currentQuestion->id"
                 :is-session-mode="true"
+                :is-last-question="$currentQuestionIndex === ($totalQuestions - 1)"
                 :key="'question-'.$currentQuestion->id.'-'.$currentQuestionIndex"
                 wire:key="question-{{ $currentQuestion->id }}-{{ $currentQuestionIndex }}"
             />
