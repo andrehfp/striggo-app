@@ -13,10 +13,16 @@ class UserAnswer extends Model
         'resposta_escolhida',
         'correct',
         'xp_earned',
+        'next_review_at',
+        'repetition_number',
+        'easiness_factor',
+        'interval_days',
     ];
 
     protected $casts = [
         'correct' => 'boolean',
+        'next_review_at' => 'datetime',
+        'easiness_factor' => 'float',
     ];
 
     public function user(): BelongsTo

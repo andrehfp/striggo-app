@@ -72,7 +72,7 @@
                 <div class="mb-6 p-4 rounded-lg
                     @if($wasCorrect) bg-green-50 border border-green-200 @else bg-red-50 border border-red-200 @endif
                 ">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between mb-3">
                         <div class="flex items-center">
                             <span class="text-2xl mr-3">
                                 @if($wasCorrect) 🎉 @else 💪 @endif
@@ -97,6 +97,18 @@
                             Próxima Questão →
                         </button>
                     </div>
+
+                    <!-- Explanation -->
+                    @if($question->explicacao)
+                        <div class="mt-3 pt-3 border-t @if($wasCorrect) border-green-200 @else border-red-200 @endif">
+                            <p class="text-sm font-semibold @if($wasCorrect) text-green-800 @else text-red-800 @endif mb-1">
+                                📚 Explicação:
+                            </p>
+                            <p class="text-sm @if($wasCorrect) text-green-700 @else text-red-700 @endif leading-relaxed">
+                                {{ $question->explicacao }}
+                            </p>
+                        </div>
+                    @endif
                 </div>
             @endif
 

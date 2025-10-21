@@ -34,6 +34,11 @@
                 <livewire:user-stats />
             </div>
 
+            <!-- Weak Categories Section -->
+            <div class="mb-8">
+                <livewire:weak-categories />
+            </div>
+
             <!-- Action Buttons -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Practice Mode -->

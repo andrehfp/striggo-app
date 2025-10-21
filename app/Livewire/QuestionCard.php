@@ -32,17 +32,8 @@ class QuestionCard extends Component
     {
         $user = Auth::user();
 
-        // Get a random question that user hasn't answered yet
-        $this->question = Question::whereNotIn('id', function($query) use ($user) {
-            $query->select('question_id')
-                  ->from('user_answers')
-                  ->where('user_id', $user->id);
-        })->inRandomOrder()->first();
-
-        // If all questions answered, get any random question
-        if (!$this->question) {
-            $this->question = Question::inRandomOrder()->first();
-        }
+        // Use adaptive algorithm to get next question
+        $this->question = $this->gamificationService->getAdaptiveQuestion($user);
 
         // Shuffle answer options to prevent memorization by letter
         $this->shuffleOptions();

@@ -15,6 +15,7 @@ class Question extends Model
         'opcao_c',
         'opcao_d',
         'resposta_correta',
+        'explicacao',
         'categoria',
         'prova_tipo',
     ];
