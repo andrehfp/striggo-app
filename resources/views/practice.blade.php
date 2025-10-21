@@ -19,8 +19,8 @@
                 <livewire:streak-counter />
             </div>
 
-            <!-- Question Card -->
-            <livewire:question-card />
+            <!-- Practice Session (10 questions) -->
+            <livewire:practice-session :question-count="10" />
 
             <!-- Tips Section -->
             <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
@@ -30,9 +30,9 @@
                         <h4 class="font-semibold text-blue-900 mb-2">Dicas para Estudar Melhor</h4>
                         <ul class="text-sm text-blue-800 space-y-1">
                             <li>• Leia atentamente toda a questão antes de escolher a resposta</li>
+                            <li>• Cada sessão tem 10 questões - complete todas para ver seu resultado</li>
                             <li>• Foque nas categorias onde você tem mais dificuldade</li>
                             <li>• Estude um pouco todos os dias para manter o streak</li>
-                            <li>• Complete sua meta diária de {{ auth()->user()->getOrCreateProgress()->daily_goal }} questões</li>
                         </ul>
                     </div>
                 </div>
