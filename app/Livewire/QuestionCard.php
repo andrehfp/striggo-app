@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionCard extends Component
 {
+    public ?int $questionId = null;
+    public bool $isSessionMode = false;
     public ?Question $question = null;
     public ?string $selectedAnswer = null;
     public bool $answered = false;
@@ -23,9 +25,20 @@ class QuestionCard extends Component
         $this->gamificationService = $gamificationService;
     }
 
-    public function mount()
+    public function mount(?int $questionId = null, bool $isSessionMode = false)
     {
-        $this->loadNewQuestion();
+        $this->questionId = $questionId;
+        $this->isSessionMode = $isSessionMode;
+
+        if ($questionId) {
+            // Session mode: load specific question
+            $this->question = Question::find($questionId);
+        } else {
+            // Standalone mode: load adaptive question
+            $this->loadNewQuestion();
+        }
+
+        $this->shuffleOptions();
     }
 
     public function loadNewQuestion()
@@ -85,11 +98,26 @@ class QuestionCard extends Component
             'xp' => $this->xpEarned,
             'newLevel' => $result['new_level'],
         ]);
+
+        // If in session mode, notify parent component
+        if ($this->isSessionMode) {
+            $this->dispatch('session-answer-submitted', [
+                'correct' => $this->wasCorrect,
+                'xp_earned' => $this->xpEarned,
+                'selected_answer' => $this->selectedAnswer,
+            ])->to('practice-session');
+        }
     }
 
     public function nextQuestion()
     {
-        $this->loadNewQuestion();
+        if ($this->isSessionMode) {
+            // In session mode, notify parent to move to next question
+            $this->dispatch('session-next-question')->to('practice-session');
+        } else {
+            // Standalone mode: load next question directly
+            $this->loadNewQuestion();
+        }
     }
 
     public function render()

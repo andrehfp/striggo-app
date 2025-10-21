@@ -11,15 +11,8 @@
                 </a>
             </div>
 
-            <!-- Question Card - Protagonista -->
-            <livewire:question-card />
-
-            <!-- Minimal Daily Progress -->
-            <div class="mt-8 text-center">
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Meta diária: <span class="font-medium text-gray-900 dark:text-gray-100">{{ auth()->user()->getOrCreateProgress()->questions_today }}</span> / {{ auth()->user()->getOrCreateProgress()->daily_goal }} questões
-                </p>
-            </div>
+            <!-- Practice Session (10 questions) -->
+            <livewire:practice-session :question-count="10" />
 
         </div>
     </div>

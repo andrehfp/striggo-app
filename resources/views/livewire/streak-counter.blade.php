@@ -1,22 +1,32 @@
-<div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-5">
-    <div class="flex items-center justify-between">
+<div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+    <div class="flex items-center justify-between mb-4">
         <div>
-            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Sequência</p>
+            <p class="text-sm text-gray-500 mb-1">Sequência</p>
             <div class="flex items-baseline gap-2">
-                <p class="text-3xl font-semibold text-gray-900 dark:text-gray-100">{{ $streakDays }}</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                    {{ $streakDays === 1 ? 'dia' : 'dias' }}
-                </p>
+                <p class="text-3xl font-bold {{ $streakDays >= 7 ? 'text-orange-600' : 'text-gray-900' }}">{{ $streakDays }}</p>
+                <p class="text-lg text-gray-400">{{ $streakDays === 1 ? 'dia' : 'dias' }}</p>
             </div>
         </div>
-        @if($streakDays >= 7)
-            <div class="text-3xl">🔥</div>
-        @endif
+        <div class="w-16 h-16 {{ $streakDays >= 7 ? 'bg-gradient-to-br from-orange-100 to-red-200' : 'bg-gradient-to-br from-gray-100 to-gray-200' }} rounded-2xl flex items-center justify-center text-3xl">
+            @if($streakDays >= 7)
+                🔥
+            @else
+                📅
+            @endif
+        </div>
     </div>
 
     @if($streakDays === 0)
-        <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-            Responda uma questão para começar
+        <p class="text-sm text-gray-500">
+            Responda uma questão hoje para começar sua sequência
+        </p>
+    @elseif($streakDays >= 7)
+        <p class="text-sm text-orange-600 font-medium">
+            🎯 Você está em chamas!
+        </p>
+    @else
+        <p class="text-sm text-gray-500">
+            Continue estudando diariamente
         </p>
     @endif
 </div>
