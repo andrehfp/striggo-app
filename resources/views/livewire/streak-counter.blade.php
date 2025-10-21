@@ -1,29 +1,22 @@
-<div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-lg shadow p-6 text-white">
+<div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-5">
     <div class="flex items-center justify-between">
-        <div class="flex items-center">
-            <div class="text-5xl mr-4">🔥</div>
-            <div>
-                <p class="text-sm opacity-90">Sequência</p>
-                <p class="text-4xl font-bold">{{ $streakDays }}</p>
-                <p class="text-xs opacity-75">{{ $streakDays === 1 ? 'dia' : 'dias' }} seguidos</p>
+        <div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Sequência</p>
+            <div class="flex items-baseline gap-2">
+                <p class="text-3xl font-semibold text-gray-900 dark:text-gray-100">{{ $streakDays }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                    {{ $streakDays === 1 ? 'dia' : 'dias' }}
+                </p>
             </div>
         </div>
-
         @if($streakDays >= 7)
-            <div class="text-right">
-                <span class="text-2xl">⭐</span>
-                <p class="text-xs opacity-90 mt-1">Incrível!</p>
-            </div>
+            <div class="text-3xl">🔥</div>
         @endif
     </div>
 
     @if($streakDays === 0)
-        <div class="mt-4 pt-4 border-t border-white border-opacity-20">
-            <p class="text-sm opacity-90">💪 Responda uma questão para começar sua sequência!</p>
-        </div>
-    @elseif($streakDays >= 7)
-        <div class="mt-4 pt-4 border-t border-white border-opacity-20">
-            <p class="text-sm opacity-90">🎯 Continue assim! Sua dedicação é inspiradora!</p>
-        </div>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+            Responda uma questão para começar
+        </p>
     @endif
 </div>
