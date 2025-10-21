@@ -1,0 +1,37 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Book with graduation cap -->
+  <g transform="translate(10, 10)">
+    <!-- Book -->
+    <rect x="0" y="15" width="30" height="25" rx="3" fill="url(#grad1)"/>
+    <rect x="3" y="18" width="24" height="3" fill="white" opacity="0.3"/>
+    <rect x="3" y="24" width="24" height="2" fill="white" opacity="0.3"/>
+    <rect x="3" y="29" width="18" height="2" fill="white" opacity="0.3"/>
+
+    <!-- Graduation cap -->
+    <polygon points="15,5 5,12 25,12" fill="url(#grad2)"/>
+    <rect x="14" y="12" width="2" height="8" fill="url(#grad2)"/>
+    <circle cx="15" cy="21" r="1.5" fill="#fbbf24"/>
+  </g>
+
+  <!-- Text: STRIGGO -->
+  <text x="50" y="38" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="url(#grad1)">
+    STRIGGO
+  </text>
+
+  <!-- Subtitle -->
+  <text x="51" y="50" font-family="Arial, sans-serif" font-size="10" fill="#6b7280" letter-spacing="2">
+    EXAME CFC
+  </text>
+</svg>
