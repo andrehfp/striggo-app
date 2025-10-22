@@ -33,6 +33,11 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <!-- AI Tutor (floating chat) -->
+            @auth
+                <livewire:a-i-tutor />
+            @endauth
         </div>
         @livewireScripts
     </body>

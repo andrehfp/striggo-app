@@ -65,6 +65,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Badge::class, 'user_badges')->withTimestamps();
     }
 
+    public function conversations(): HasMany
+    {
+        return $this->hasMany(Conversation::class);
+    }
+
     // Helper methods
     public function getOrCreateProgress(): UserProgress
     {
