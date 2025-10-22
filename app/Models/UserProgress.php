@@ -57,6 +57,9 @@ class UserProgress extends Model
             return;
         }
 
+        // Reset daily counter for a new day
+        $this->questions_today = 0;
+
         if ($this->last_study_date?->isYesterday()) {
             // Continuing the streak
             $this->streak_days++;
@@ -94,5 +97,16 @@ class UserProgress extends Model
         $currentProgress = $this->xp - $xpForCurrentLevel;
 
         return ($currentProgress / $xpPerLevel) * 100;
+    }
+
+    /**
+     * Reset daily counter if it's a new day
+     */
+    public function resetDailyCounterIfNeeded(): void
+    {
+        if (!$this->last_study_date?->isToday()) {
+            $this->questions_today = 0;
+            $this->save();
+        }
     }
 }

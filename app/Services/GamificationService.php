@@ -122,6 +122,9 @@ class GamificationService
     {
         $progress = $user->getOrCreateProgress();
 
+        // Ensure daily counter is reset if it's a new day
+        $progress->resetDailyCounterIfNeeded();
+
         return [
             'questions_today' => $progress->questions_today,
             'daily_goal' => $progress->daily_goal,
