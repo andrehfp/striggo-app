@@ -12,6 +12,7 @@ class QuestionCard extends Component
     public ?int $questionId = null;
     public bool $isSessionMode = false;
     public bool $isLastQuestion = false;
+    public ?string $parentId = null;
     public ?Question $question = null;
     public ?string $selectedAnswer = null;
     public bool $answered = false;
@@ -107,15 +108,24 @@ class QuestionCard extends Component
                 'correct' => $this->wasCorrect,
                 'xp_earned' => $this->xpEarned,
                 'selected_answer' => $this->selectedAnswer,
-            ])->to('practice-session');
+            ]);
         }
     }
 
     public function nextQuestion()
     {
+        // Add a visible confirmation that method was called
+        session()->flash('debug', 'nextQuestion was called!');
+
+        \Log::info('QuestionCard::nextQuestion called', [
+            'isSessionMode' => $this->isSessionMode,
+            'questionId' => $this->questionId,
+        ]);
+
         if ($this->isSessionMode) {
             // In session mode, notify parent to move to next question
-            $this->dispatch('session-next-question')->to('practice-session');
+            \Log::info('Dispatching session-next-question event');
+            $this->dispatch('session-next-question');
         } else {
             // Standalone mode: load next question directly
             $this->loadNewQuestion();

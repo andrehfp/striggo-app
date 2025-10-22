@@ -101,10 +101,22 @@ class PracticeSession extends Component
     #[On('session-next-question')]
     public function nextQuestion()
     {
+        \Log::info('PracticeSession::nextQuestion called', [
+            'component_id' => $this->getId(),
+            'currentIndex' => $this->currentQuestionIndex,
+            'totalQuestions' => $this->totalQuestions,
+            'backtrace' => debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 5),
+        ]);
+
         $this->currentQuestionIndex++;
+
+        \Log::info('After increment', [
+            'newIndex' => $this->currentQuestionIndex,
+        ]);
 
         // Check if session is complete
         if ($this->currentQuestionIndex >= $this->totalQuestions) {
+            \Log::info('Session complete, calling completeSession()');
             $this->completeSession();
         }
 
